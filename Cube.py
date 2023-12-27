@@ -6,7 +6,7 @@ To-Do:
 2. Actually implement the moves
 3. User-input
 """
-
+import copy
 # 6 colors: Blue, Green, Orange, Red, White, Yellow 
 
 """
@@ -21,43 +21,43 @@ How to associate color with the stickers?
 # (Front/Back) F/B, (Up/Down) U/D, (Right/Left) R/L
 
 #Front Up right cubie
-FUR = 0, 
-URF = 1, 
-RUF = 2,
+FUR = 0 
+URF = 1 
+RUF = 2
 
 #Front Down Right cubie
-FDR = 3, 
-DFR = 4, 
-RFD = 5, 
+FDR = 3 
+DFR = 4 
+RFD = 5 
 
 #Front Up Left cubie
-FUL = 6, 
-ULF = 7, 
-LUF = 8,      
+FUL = 6 
+ULF = 7 
+LUF = 8      
 
 #Front Down Left Cubie
-FDL = 9, 
-DFL = 10, 
-LFD = 11,  
+FDL = 9 
+DFL = 10 
+LFD = 11  
 
 #Back Up Right Cubie
-BUR = 12, 
-URB = 13, 
-RUB = 14,  
+BUR = 12 
+URB = 13 
+RUB = 14  
 
 #Back Down Right Cubie
-BDR = 15, 
-DRB = 16, 
-RDB = 17, 
+BDR = 15 
+DRB = 16 
+RDB = 17 
 
 #Back Up Left Cubie
-BUL = 18, 
-ULB = 19, 
-LUB = 20,  
+BUL = 18 
+ULB = 19 
+LUB = 20  
 
 #Back Down Left Cubie
-BDL = 21, 
-DLB = 22, 
+BDL = 21 
+DLB = 22 
 LDB = 23
 
 '''
@@ -143,7 +143,7 @@ L = [   FUR, URF, RUF, #Front Up Right cubie unchanged
         ULB, BUL, LUB, 
         ULF, FUL, LUF,
         BUR, URB, RUB, #Back Up Right cubie unchanged
-        BDR, DRB, RUB, #Back Down Right cubie unchanged
+        BDR, DRB, RDB, #Back Down Right cubie unchanged
         DLB, BDL, LDB,
         DFL, FDL, LFD
         ]
@@ -180,7 +180,7 @@ Back Up Left Cubie -> Back Up Right Cubie
 U =    [RUB, URB, BUR, 
         FDR, DFR, RFD, #Front Down Right Cubie unchanged
         RUF, URF, FUR, 
-        LUF, ULF, FUL, #Front Down Left Cubie unchanged
+        FDL, DFL, LFD, #Front Down Left Cubie unchanged
         LUB, ULB, BUL, 
         BDR, DRB, RDB, #Back Down Right Cubie unchanged
         LUF, ULF, FUL,
@@ -230,9 +230,10 @@ class Cube:
         """
         
         """
-        i = 0   
+        initialCube = [i for i in self.cube] 
+        i = 0
         for j in permutation:
-            self.cube[j] = i  
+            self.cube[j] = initialCube[i]  
             i += 1
 
 """
