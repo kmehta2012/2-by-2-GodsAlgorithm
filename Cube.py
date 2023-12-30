@@ -75,6 +75,7 @@ LDB = 23
     Because of these symmetries we only need to implement 6 moves on the cube. 
     We choose to implement front, left, and Up moves in both directions
 '''
+#------------ ALL MOVES ------------------------------------------------------
 
 #F - Singmaster notation fron Front Clockwise
 '''
@@ -99,14 +100,14 @@ Down left cubie -> Up left cubie
     dfl = rdf
     ldf = drf
 '''
-F = [FUL, LUF, ULF, 
+F = (FUL, LUF, ULF, 
     FUR, RUF, URF, 
     FDL, LFD, DFL,
     FDR, RFD, DFR, 
     BUR, URB, RUB,  # Down cubie unchanged
     BDR, DRB, RDB,  # ""
     BUL, ULB, LUB,  # ""
-    BDL, DLB, LDB ] # ""
+    BDL, DLB, LDB) # ""
 
 
 #F' - Front Counter clockwise
@@ -138,7 +139,7 @@ ULB = BDL
 LUB = LDB   
 '''
 
-L = [   FUR, URF, RUF, #Front Up Right cubie unchanged
+L = (   FUR, URF, RUF, #Front Up Right cubie unchanged
         FDR, DFR, RFD, #Front Down Right cubie unchanged
         ULB, BUL, LUB, 
         ULF, FUL, LUF,
@@ -146,7 +147,7 @@ L = [   FUR, URF, RUF, #Front Up Right cubie unchanged
         BDR, DRB, RDB, #Back Down Right cubie unchanged
         DLB, BDL, LDB,
         DFL, FDL, LFD
-        ]
+    )
 
 #L' - Left Counter Clockwise
 """
@@ -177,20 +178,22 @@ Back Up Left Cubie -> Back Up Right Cubie
     RUB = BUL
 
 """
-U =    [RUB, URB, BUR, 
+U =    (RUB, URB, BUR, 
         FDR, DFR, RFD, #Front Down Right Cubie unchanged
         RUF, URF, FUR, 
         FDL, DFL, LFD, #Front Down Left Cubie unchanged
         LUB, ULB, BUL, 
         BDR, DRB, RDB, #Back Down Right Cubie unchanged
         LUF, ULF, FUL,
-        BDL, DLB, LDB ] #Back Down Left Cubie unchanged
+        BDL, DLB, LDB) #Back Down Left Cubie unchanged
 
 
 # U'
 """
 inverse of UpClockwise
 """
+moves = {F : "F", L : "L", U : "U"}
+inverseMoves = {F: "F'", L : "L'", U : "U'"}
 
 class Cube:
     '''
@@ -225,6 +228,7 @@ class Cube:
     
     def applyMove(self, permutation):
         self.cube = [self.cube[i] for i in permutation]
+        #return moves[permutation]
 
     def applyInverseMove(self, permutation):
         """
@@ -235,6 +239,8 @@ class Cube:
         for j in permutation:
             self.cube[j] = initialCube[i]  
             i += 1
+        
+        #return inverseMoves[permutation]
 
 """
 def userInput(cube = []):
