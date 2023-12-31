@@ -15,6 +15,7 @@ from math import inf
 from Cube import *
 
 moveNumber = 0
+bfsQueue = []
 
 """
 Core idea - I'm growing the graph and doing a BFS on it at the same time - in the same DS. 
@@ -41,19 +42,20 @@ class Graph:
         solve the problem. Let's see. 
         """
         # Add a new cube state to the graph - if the state isn't in the graph yet
-        #initialState = copy.deepcopy(cube.state)
 
         #Clockwise moves
         for i in moves: # i are the KEYS
             key = cube.applyMove(i)
             if self.adjacency_list.get(key, None) is None: #if the state does not exist in graph, then I add it. I think None is a decent choice, since the value is always a list
                 self.adjacency_list[key] = [cube.state, moves[i], moveNumber] #using ID for increasing readability while I test. Can change it later
-        
+                bfsQueue.append(key)
+    
         #Anticlockwise moves
         for i in inverseMoves: # i are the KEYS
             key = cube.applyInverseMove(i)
             if self.adjacency_list.get(key, None) is None: 
                 self.adjacency_list[key] = [cube.state, inverseMoves[i], moveNumber]
+                bfsQueue.append(key)
             
     def add_edge(self, from_vertex, to_vertex, weight=None):
         # Add an edge between two vertices in the graph
@@ -99,9 +101,9 @@ class Graph:
         while queue:
            print(queue)
            vertex = queue.pop(0)
-           for i in self.adjacency_list[vertex]:
-                if shortestPath[i] == inf:
-                    shortestPath[i] = shortestPath[vertex] + 1
+           for i in self.adjacency_list[vertex]: # i in add_neighbouts:
+                if shortestPath[i] == inf: #if neighbour NOT in adj List
+                    shortestPath[i] = shortestPath[vertex] + 1 #add to adj list - {neighbour : }
                     queue.append(i)
                     predecessor[i] = vertex
         
