@@ -218,8 +218,8 @@ class Cube:
 
     '''
 
-    def __init__(self, cube):
-        self.cube = cube
+    def __init__(self, state):
+        self.state = state
 
     #Shuffle the cube randomly n times (under the QTM)
     def shuffle(n):
@@ -227,20 +227,21 @@ class Cube:
 
     
     def applyMove(self, permutation):
-        self.cube = [self.cube[i] for i in permutation]
-        #return moves[permutation]
+        resultantState = [self.state[i] for i in permutation]
+        return tuple(resultantState)
 
     def applyInverseMove(self, permutation):
         """
         
         """
-        initialCube = [i for i in self.cube] 
+       # initialState = [i for i in self.state] 
+        resultantState = [i for i in self.state] 
         i = 0
         for j in permutation:
-            self.cube[j] = initialCube[i]  
+            resultantState[j] = self.state[i]  
             i += 1
-        
-        #return inverseMoves[permutation]
+    
+        return tuple(resultantState)
 
 """
 def userInput(cube = []):
