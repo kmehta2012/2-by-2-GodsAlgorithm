@@ -220,13 +220,11 @@ class Cube:
 
     def __init__(self, state):
         self.state = state
-
-    #Shuffle the cube randomly n times (under the QTM)
-    def shuffle(n):
-        pass
-
     
     def applyMove(self, permutation):
+        """
+        
+        """
         resultantState = [self.state[i] for i in permutation]
         return tuple(resultantState)
 
