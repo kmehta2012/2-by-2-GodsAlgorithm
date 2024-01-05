@@ -19,7 +19,7 @@ the program to work correctly. Below is an explanation of the terms that the pro
 3. Any Cubie will have a sticker on the Front/Back face, Up/Down Face, and Left/Right face. The program prompts the user to enter the colors of each cubie. To correctly do so, enter the first letter of the colour on the Front/Back face, then the first letter of the colour on the Up/Down Face, and lastly enter the first letter of the color on the left/right face - all without any space.
 4. Here's a concrete example:  
    ![Imgur](https://i.imgur.com/GVXXyfib.jpg)  
-The Front Up Right right cubie has Yellow on the Front face, Blue on the Up Face, and Orange on the Right face. When the program asks the user to enter the colors on the Front Up Right Face, the user should enter the following: `ybo`. Again, enter the first letter of the color on the Front/Back Face, then on the Up/Down face, and then on the Right/Left face.
+The Front Up Right right cubie has Yellow on the Front face, Blue on the Up Face, and Orange on the Right face. When the program asks the user to enter the colors on the Front Up Right cubie, the user should enter the following: `ybo`. Again, enter the first letter of the color on the Front/Back Face, then on the Up/Down face, and then on the Right/Left face.
 
 
 ## Interpreting the results 
