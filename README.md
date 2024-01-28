@@ -34,8 +34,11 @@ The Front Up Right right cubie has Yellow on the Front face, Blue on the Up Face
 The program only uses the above moves. You can of course also rotate the Right and Down faces, it is probably easy to guess the notation of those four moves. The program does not use those four moves, so we don't mention them in the glossary.
 
 # How the program works
-
-Instructions to be written
+1. The idea is to model the Rubik's cube as a graph. The vertices of the graph are distinct states of the cube and there is an edge between any two vertices that are one quarter move apart (where a quarter move is one of the six moves listed above under "Interpreting the results").
+2. Now we can use a search algorithm to search for the shortest path between any two states of this graph. The program uses a Breadth First Search algorithm. More specifically, a two-way BFS on the graph.
+3. The program runs a BFS from the initial state and a BFS from the solved state. The common state where both the BFSs meet gives us the shortest path:  Go from the initial state to the common state using the shortest path given by the BFS and then go from the common state to the solved state using the shortest path from the common state to the solved state.
+4. This is computationally tractable because the God's Number for the 2 by 2 is only 14 and there are only about ~3.7 million legal states of the cube, which isn't a huge number for a computer to handle.
+   
 
 # Video Demo
 to be added
