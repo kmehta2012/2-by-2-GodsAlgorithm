@@ -5,7 +5,7 @@
 `cd 2-by-2-GodsAlgorithm`
 3. ***You need to have python3 installed to use this application.*** Assuming you have python3, run the following command to use the application:  
 `python3 GodsAlgorithm.py`
-4. After running the above command on the terminal, you follow the instructions as seen on the terminal. For the program to run correctly, you'll need to understand how to correctly input the cube to the program. ***Please see the heading titled "Inputting the Cube correctly" to understand how to correctly input the cube. It is fairly straightforward***
+4. After running the above command on the terminal, you follow the instructions as seen on the terminal. For the program to run correctly, you'll need to understand how to correctly input the cube to the program. ***Please see the heading titled "Inputting the Cube correctly" to understand how to correctly input the cube.***
 
 # How to correctly use the program
 ## Inputting the Cube correctly
